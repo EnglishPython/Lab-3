@@ -1,39 +1,39 @@
 # Lab-3
 
-## Лабораторная работа №3
+## Laboratory Work №3
 
-**Задание**
+**Task**
 
-Используя ```tkinter```, реализовать keygen - программу, генерирующую ключ для некоего абстрактного программного обеспечения (мы осуждаем пиратство) с соответствующим оформлением пользовательского интерфейса.
+Using ```tkinter```, implement a keygen – a program that generates a key for some abstract software (we condemn piracy) with an appropriate user interface design.
 
-* Выберите любимую игру, найдите по ней арт или связанную картинку в поисковике.
-* Реализуйте форму генератора ключа, которая должна включать в себя, как минимум, поле для генерируемого ключа, кнопку запуска, найденную картинку на фоне и поле ввода текста, если того требует вариант.
-* Реализуйте генератор ключа. Ключ состоит из набора символов, состоящих из латинских букв **A-Z** и цифр **0-9**. В зависимости от варианта может потребоваться ввод первой части ключа (указан в варианте). Ключ генерируется по некоторым правилам. В заданиях со сдвигом считать, что буквы и цифры последовательно как бы нанесены на бесконечную ленту, которую можно двигать влево и вправо.
+* Choose your favorite game, find artwork or a related picture in a search engine.
+* Implement the key generator form, which should include at least: a field for the generated key, a start button, the selected background image, and a text input field if required by the variant.
+* Implement the key generator. The key consists of characters from Latin letters **A-Z** and digits **0-9**. Depending on the variant, input of the first part of the key may be required (specified in the variant). The key is generated according to certain rules. In tasks with shifts, assume that letters and digits are arranged sequentially on an infinite tape that can be shifted left or right.
 
-**Варианты**
+**Variants**
 
-| Вариант | Вводная часть | Формат ключа | Правило генерации |
-| ------- | ------------- | ------------ | ----------------- |
-| 1 | нет | XXXXX-XXXXX-XXXXX |	Каждый блок имеет две цифры и три буквы в случайном порядке. Пример: FX26N-N3RT7-AZ0J8|
-| 2 | нет | XXXX-XXXX-XXXX-XXXX |	Каждый блок имеет одну цифру и три буквы в случайном порядке. Пример: AB8U-Z0MI-7FYK-K9GT |
-| 3 | HEX-число 5 знаков |	XXXXX-XXXXX-XXXXX XX |	Вводная часть ключа - число в HEX, которое необходимо перевести в DEC. Первые три цифры числа в DEC должны быть по одному в каждом блоке, последние две цифры - в конце ключа Пример: 54CD1(HEX)=347345(DEC) -> DS**3**BG-**4**09KJ-T6**7**K8 **45** |
-| 4 | нет | XXXX-XXXX-XXXX | Назначить весовые коэффициенты символам, генерировать с учётом, чтобы сумма весовых коэффициентов одного блока попала в интервал. Пример: пусть A=1, B=2,… Пусть интервал – 30…35 -> YABD-NBCO-DGIK -> Суммы: 32-34-31 |
-| 5 | 1 блок ключа | XXXXX-XXXXX-XXXXX | Опираясь на введённый фрагмент ключа, сгенерировать остаток ключа так: 2 блок - сдвиг на 3 символа вправо, 3 блок - сдвиг на 5 символов влево. Пример: JINOS-MLQRV-EDIJN |
-| 6 | нет | XXXXX-XXXX-XXXX	| Назначить весовые коэффициенты символам, генерировать с учётом, чтобы среднее значение суммы из одного блока попало в интервал. Пример: пусть A=1, B=2,… Пусть интервал – 10…15 -> YAND-NZCQ-WGIK -> Средние значения: 11-15-12 |
-| 7 | слово 6 букв | XXX-XXXXXX-XXX | 1 и 3 блок - только буквы, взятые из введённого слова, 2 блок - только цифры, соответствующие порядковым номерам букв в алфавите (десятки отбросить). Пример: ввод «MASTER» -> TMR 319058 AES |
-| 8 | DEC-число 3 знака | XXXXX-XXXX-XXX-XX | 1 блок - случайная комбинация букв и цифр, каждый последующий блок убирает 1 символ и выполняет сдвиг на последующую цифру из введённого числа. Направление сдвига чередуется. Пример: ввод «123» -> DRITF-ESJY-CPR-FS (сдвиг 1 вправо-2 влево-3 вправо) |	
-| 9	| нет | XX XXXXXXX XX | 1 и 3 блок - порядковые числа букв в алфавите (не больше 26) - обозначение границ интервала, 2 блок заполняется буквами из этого интервала в случайном порядке. Пример: выпали A и J -> 01 DEBBHCI 10 |
-| 10 | DEC-число 6 знаков |	XXXXX-XXXXX XXXX | 1 и 2 блок должны содержать 4,5,6 и 1,2,3 цифры введенного числа соответственно, остальное - случайные буквы, 3 блок - результат сложения чисел, получившихся в 1 и 2 блоках. Пример: ввод «726911» -> **276**DL-**191**GO-0467 |
+| Variant | Input Part | Key Format | Generation Rule |
+| ------- | ----------- | ---------- | --------------- |
+| 1 | none | XXXXX-XXXXX-XXXXX | Each block has two digits and three letters in random order. Example: FX26N-N3RT7-AZ0J8 |
+| 2 | none | XXXX-XXXX-XXXX-XXXX | Each block has one digit and three letters in random order. Example: AB8U-Z0MI-7FYK-K9GT |
+| 3 | HEX-number 5 digits | XXXXX-XXXXX-XXXXX XX | Input part of the key – a number in HEX, which must be converted to DEC. The first three digits of the DEC number must appear one in each block, the last two digits at the end of the key. Example: 54CD1(HEX)=347345(DEC) -> DS**3**BG-**4**09KJ-T6**7**K8 **45** |
+| 4 | none | XXXX-XXXX-XXXX | Assign weight coefficients to characters, generate ensuring that the sum of weights in each block falls into an interval. Example: let A=1, B=2,… Interval = 30…35 -> YABD-NBCO-DGIK -> Sums: 32-34-31 |
+| 5 | 1 key block | XXXXX-XXXXX-XXXXX | Based on the entered fragment of the key, generate the rest: block 2 – shift 3 characters to the right, block 3 – shift 5 characters to the left. Example: JINOS-MLQRV-EDIJN |
+| 6 | none | XXXXX-XXXX-XXXX | Assign weight coefficients to characters, generate ensuring that the average value of weights in each block falls into an interval. Example: let A=1, B=2,… Interval = 10…15 -> YAND-NZCQ-WGIK -> Averages: 11-15-12 |
+| 7 | 6-letter word | XXX-XXXXXX-XXX | Block 1 and 3 – only letters from the entered word, block 2 – only digits corresponding to alphabet order numbers of letters (drop tens). Example: input "MASTER" -> TMR 319058 AES |
+| 8 | DEC-number 3 digits | XXXXX-XXXX-XXX-XX | Block 1 – random combination of letters and digits, each subsequent block removes 1 character and shifts according to the next digit from the entered number. Shift direction alternates. Example: input "123" -> DRITF-ESJY-CPR-FS (shift 1 right – 2 left – 3 right) |
+| 9 | none | XX XXXXXXX XX | Blocks 1 and 3 – alphabet order numbers of letters (not greater than 26) – interval boundaries, block 2 is filled with random letters from this interval. Example: A and J -> 01 DEBBHCI 10 |
+| 10 | DEC-number 6 digits | XXXXX-XXXXX XXXX | Blocks 1 and 2 must contain digits 4,5,6 and 1,2,3 of the entered number respectively, the rest – random letters, block 3 – result of summing numbers from block 1 and block 2. Example: input "726911" -> **276**DL-**191**GO-0467 |
 
-**Допзадание**
+**Additional Task**
 
-Добавить музыку (8-bit желательно) на фоне и анимацию.
+Add background music (preferably 8-bit) and animation.
 
-**Дополнительно**
+**Notes**
 
-DEC-число - число в десятичном формате  
-HEX-число - число в шестнадцатеричном формате  
-Для перевода HEX в DEC можно воспользоваться конструкцией ```dec = int(hex, 16)```
+DEC-number – number in decimal format  
+HEX-number – number in hexadecimal format  
+To convert HEX to DEC you can use: ```dec = int(hex, 16)```
 
-Об использовании tkinter: https://pythonru.com/uroki/obuchenie-python-gui-uroki-po-tkinter  
-Функционал random: https://docs.python.org/3/library/random.html
+About tkinter: https://pythonru.com/uroki/obuchenie-python-gui-uroki-po-tkinter  
+Random module functionality: https://docs.python.org/3/library/random.html  
